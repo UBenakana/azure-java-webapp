@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from Azure Web App!";
+        return "Hello from Azure Production Web App!";
     }
 }
