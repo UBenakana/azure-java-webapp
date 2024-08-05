@@ -1,11 +1,26 @@
-name: azure java webapp
+name: azure-java-webapp
 
 trigger:
-  - main
+  branches:
+    include:
+      - main
 
 pool:
   name: Uday
-   
+
 steps:
-- script: echo Hello world!
-  displayName: Say hello
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
