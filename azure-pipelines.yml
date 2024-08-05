@@ -1,3 +1,5 @@
+name: azure java webapp
+
 trigger:
   - main
 
@@ -5,4 +7,5 @@ pool:
   name: Uday
    
 steps:
- - script: echo uday
+- script: echo Hello world!
+  displayName: Say hello
