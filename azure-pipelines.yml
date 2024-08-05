@@ -10,4 +10,4 @@ pool:
   name: Uday
 
 steps:
-  - script: echo Hello, World!
+  - powershell:  echo changed to uday
