@@ -1,6 +1,7 @@
 name: azure-java-webapp
 
 
+
 trigger:
   - main
 
@@ -31,5 +32,10 @@ stages:
         inputs:
           buildType: 'current'
           downloadType: 'single'
-          downloadPath: '$(System.ArtifactsDirectory)'    
+          downloadPath: '$(System.ArtifactsDirectory)'   
+      
+      - task: Docker@2
+        inputs:
+          command: 'buildAndPush'
+          Dockerfile: '**/Dockerfile'
       
