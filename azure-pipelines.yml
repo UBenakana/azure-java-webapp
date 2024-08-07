@@ -22,5 +22,5 @@ stages:
         inputs:
           PathtoPublish: 'target/*.jar'
           ArtifactName: 'drop'
-          publishLocation: 'Container'
+          #publishLocation: 'Container'
         displayName: 'Publish Artifacts' 
