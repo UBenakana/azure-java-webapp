@@ -18,9 +18,3 @@ stages:
           echo "Maven packaging process"
           mvn clean package
         displayName: 'Package with Maven'  
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: 'target/*.jar'
-          #ArtifactName: 'drop'
-          #publishLocation: 'Container'
-        displayName: 'Publish Artifacts' 
