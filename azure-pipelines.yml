@@ -1,9 +1,7 @@
 name: azure-java-webapp
 
 trigger:
-  branches:
-    include:
-      - main
+  - main
 
 pool:
   name: Ubuntu
@@ -17,4 +15,9 @@ stages:
       - script: |
           echo "Maven packaging process"
           mvn clean package
-        displayName: 'Package with Maven'  
+        displayName: 'Package with Maven'
+      - task: PublishBuildArtifacts@1
+        inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
