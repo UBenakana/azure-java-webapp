@@ -6,16 +6,15 @@ trigger:
       - main
 
 pool:
-  name: Uday
+  name: Ubuntu
 
-steps:
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+stages:
+  - stage: Build
+    jobs:
+    - job: Buildjob
+      displayName: 'Build Job'
+      steps:
+      - script: |
+          echo "Maven packaging process"
+          mvn clean package
+        displayName: 'Package with Maven'  
