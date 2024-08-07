@@ -16,8 +16,13 @@ stages:
           echo "Maven packaging process"
           mvn clean package
         displayName: 'Package with Maven'
+      - task: CopyFiles@2
+        inputs:
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+
       - task: PublishBuildArtifacts@1
         inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+      
