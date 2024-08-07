@@ -30,12 +30,14 @@ stages:
           
       - task: DownloadBuildArtifacts@1
         inputs:
+
           buildType: 'current'
           downloadType: 'single'
           downloadPath: '$(System.ArtifactsDirectory)'   
       
       - task: Docker@2
         inputs:
-          command: 'buildAndPush'
-          Dockerfile: '**/Dockerfile'
-      
+         containerRegistry: 'Docker-connection'
+         repository: 'udaykumarreddy995/azurewebapp20'
+         command: 'buildAndPush'
+         Dockerfile: '**/Dockerfile'
