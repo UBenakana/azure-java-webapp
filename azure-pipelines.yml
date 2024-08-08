@@ -1,43 +1,9 @@
-name: azure-java-webapp
-
-
-
 trigger:
-  - main
+ - main
 
 pool:
-  name: Ubuntu
+   vmImage: 'ubuntu-latest'
 
-stages:
-  - stage: Build
-    jobs:
-    - job: Buildjob
-      displayName: 'Build Job'
-      steps:
-      - script: |
-          echo "Maven packaging process"
-          mvn clean package
-        displayName: 'Package with Maven'
-      - task: CopyFiles@2
-        inputs:
-          targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
-          
-      - task: DownloadBuildArtifacts@1
-        inputs:
-
-          buildType: 'current'
-          downloadType: 'single'
-          downloadPath: '$(System.ArtifactsDirectory)'   
-      
-      - task: Docker@2
-        inputs:
-         containerRegistry: 'Docker-connection'
-         repository: 'udaykumarreddy995/azurewebapp20'
-         command: 'buildAndPush'
-         Dockerfile: '**/Dockerfile'
+steps:
+ - script: echo Hello world!
+   displayName: Say hello
